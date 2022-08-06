@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import AppError from "../../errors/AppError";
 import createPostService from "../../services/post/createPost.srvc";
 
 const createPostController = async (req: Request, res: Response) => {
@@ -14,8 +15,8 @@ const createPostController = async (req: Request, res: Response) => {
       data: createdPost
     });
   } catch (err) {
-    if (err instanceof Error) {
-      return res.status(400).json({
+    if (err instanceof AppError) {
+      return res.status(err.statusCode).json({
         error: err.name,
         message: err.message,
       });
