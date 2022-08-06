@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import createPostService from "../../services/post/createPost.svc";
+import createPostService from "../../services/post/createPost.srvc";
 
 const createPostController = async (req: Request, res: Response) => {
 
