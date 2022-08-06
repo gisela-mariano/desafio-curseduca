@@ -9,3 +9,8 @@ export interface ICreatePostResp{
   id: string;
   post: string;
 }
+
+export interface IEditPostResp{
+  postId: string;
+  newPost: string;
+}
