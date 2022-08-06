@@ -1,10 +1,9 @@
 import { hash } from 'bcryptjs';
-import { AppDataSource } from '../../data-source';
 import { User } from '../../entities/user.entity';
 import { ICreateUser, ICreateUserReturn } from '../../interfaces/user.interface';
+import { userRepository } from '../../repositories/user.repository';
 
-const createUserService = async ({ name, email, password }: ICreateUser) => {
-  const userRepository = AppDataSource.getRepository(User);
+const createUserService = async ({ name, email, password }: ICreateUser): Promise<ICreateUserReturn> => {
 
   const hashedPassowrd = await hash(password, 10);
 
