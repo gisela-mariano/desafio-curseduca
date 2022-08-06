@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import AppError from '../../errors/AppError';
 import { ILoginUser } from '../../interfaces/user.interface';
 import loginUserService from '../../services/user/loginUser.srvc';
 
@@ -10,8 +11,8 @@ const LoginUserController = async (req: Request, res: Response) => {
 
     return res.status(200).json(token)
   } catch (err) {
-    if (err instanceof Error) {
-      return res.status(401).json({
+    if (err instanceof AppError) {
+      return res.status(err.statusCode).json({
         error: err.name,
         message: err.message,
       });
