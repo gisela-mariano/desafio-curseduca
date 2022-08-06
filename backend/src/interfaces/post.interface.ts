@@ -10,7 +10,11 @@ export interface ICreatePostResp{
   post: string;
 }
 
-export interface IEditPostResp{
+export interface IEditPost{
   postId: string;
   newPost: string;
+}
+
+export interface IDeletePost{
+  postId: string;
 }

@@ -1,7 +1,7 @@
-import { ICreatePostResp, IEditPostResp } from "../../interfaces/post.interface";
+import { ICreatePostResp, IEditPost } from "../../interfaces/post.interface";
 import { postRepository } from "../../repositories/post.repository";
 
-const editPostService = async ({postId, newPost}: IEditPostResp): Promise<ICreatePostResp> => {
+const editPostService = async ({postId, newPost}: IEditPost): Promise<ICreatePostResp> => {
   console.log(postId);
   
 
