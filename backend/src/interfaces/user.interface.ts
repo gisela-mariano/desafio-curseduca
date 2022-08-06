@@ -15,3 +15,12 @@ export interface ICreateUserResp{
   name: string;
   email: string;
 }
+
+export interface ILoginUser{
+  email: string;
+  password: string;
+}
+
+export interface ILoginUserResp{
+  token: string;
+}

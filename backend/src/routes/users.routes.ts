@@ -1,9 +1,10 @@
 import { Request, Response, Router } from 'express';
 import createUserController from '../controllers/user/createUser.ctrl';
+import LoginUserController from '../controllers/user/loginUser.ctrl';
 
 const userRouter = Router();
 
 userRouter.post('', createUserController);
-userRouter.get('', (req:Request, res: Response) => res.status(200).json({ala: "foi"}));
+userRouter.post('/login', LoginUserController);
 
 export default userRouter;
