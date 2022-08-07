@@ -28,7 +28,12 @@ export interface IPropsInput{
 }
 
 export interface IPropsState{
-  setIsInRegisterPage: Dispatch<SetStateAction<boolean>>
+  setIsInRegisterPage: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface IPropsStateModal{
+  modalIsOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface INewPost{
