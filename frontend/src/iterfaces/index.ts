@@ -30,3 +30,10 @@ export interface IPropsInput{
 export interface IPropsState{
   setIsInRegisterPage: Dispatch<SetStateAction<boolean>>
 }
+
+export interface INewPost{
+  username: string;
+  post: string;
+  id_user: string;
+  id_post: string;
+}

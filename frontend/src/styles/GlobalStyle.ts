@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --blue: rgba(11, 61, 138, 1);
     --low-gray: rgba(217, 217, 217, 1);
     --gray: rgba(159, 153, 153, 1);
-    --high-gray: rgba(87, 76, 76, 1);
+    --high-gray: rgba(45, 41, 41, 1);
     --red: rgba(225, 57, 20, 1);
   }
   html, body, div, span, applet, object, iframe,
@@ -73,6 +73,11 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     transition: all 0.5s ease;
   }
+
+  main{
+    background-color: var(--low-gray);
+  }
+
   .erro{
     font-size: 0.8rem;
     color: var(--red);
