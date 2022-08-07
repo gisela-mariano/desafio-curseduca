@@ -3,9 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FaEnvelope, FaKey } from 'react-icons/fa';
 
 import InputComponent from '../input';
-import { ILoginUser, IPropsState } from '../../iterfaces';
+import { ILoggedUser, ILoginUser, IPropsState } from '../../iterfaces';
 import { StyleContainer } from './style';
 import { schemaLogin } from '../../schemas';
+import { apiAccess } from '../../services';
 
 const FormLogin = ({setIsInRegisterPage}: IPropsState) => {
 
@@ -18,8 +19,17 @@ const FormLogin = ({setIsInRegisterPage}: IPropsState) => {
   });
 
   const onSubmit = (data: ILoginUser) => {
-    console.log(data);
+    
+    apiAccess
+      .post("/users/login", JSON.stringify(data))
+      .then((res) => handleSuccessLogin(res.data.token))
+      .catch((err) => console.log(err))
   };
+
+  const handleSuccessLogin = (token: ILoggedUser) => {
+
+    localStorage.setItem("userData", JSON.stringify({token}))
+  }
 
   return (
     <>

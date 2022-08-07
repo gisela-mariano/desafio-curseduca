@@ -32,8 +32,11 @@ export const StyleContainer = styled.div`
       }
 
       .cont-user-info{
+        width: 135px;
+
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         span{
           color: white;
@@ -44,7 +47,7 @@ export const StyleContainer = styled.div`
         }
 
         img{
-          height: 45px;
+          height: 35px;
         }
       }
 
@@ -86,7 +89,7 @@ export const StyleContainer = styled.div`
 
         .cont-textarea{
           width: 100%;
-          height: 120px;
+          height: 130px;
 
           border: 2px solid var(--blue);
 
@@ -113,15 +116,35 @@ export const StyleContainer = styled.div`
             box-sizing: border-box;
           }
 
-          span{
-            font-size: 0.8rem;
+          .cont-infos-textarea{
+            width: 100%;
 
-            margin: 7px 10px 0;
+            display: flex;
+            justify-content: space-between;
 
-            color: var(--gray);
+            span{
+              font-size: 0.8rem;
+  
+              margin: 7px 10px 0;
+  
+              color: var(--gray);
+  
+              align-self: end;
+            }
 
-            align-self: end;
+            button{
+              height: 25px;
+
+              margin-left: 10px;
+
+              background-color: var(--yellow);
+              color: white;
+
+              border: none;
+              border-radius: 10px;
+            }
           }
+
         }
 
       }
@@ -136,6 +159,7 @@ export const StyleContainer = styled.div`
   @media screen and (max-width: 650px) {
 
     .cont-user-info{
+      max-width: 95px;
 
       img{
         display: none;

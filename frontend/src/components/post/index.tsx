@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FiSettings } from 'react-icons/fi';
 
 import { INewPost } from "../../iterfaces";
+import { apiAccess } from '../../services';
 import ModalEditPost from '../modalEditPost';
 import { StyleContainer } from './style';
 
@@ -25,7 +26,7 @@ const Post = ({username, post, id_user, id_post}: INewPost) => {
 
         <p>{post}</p>
 
-        <ModalEditPost modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
+        <ModalEditPost modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} id_post={id_post}/>
       </StyleContainer>
     </>
   )

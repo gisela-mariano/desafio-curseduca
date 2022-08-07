@@ -3,9 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FaUserAlt, FaEnvelope, FaKey } from 'react-icons/fa';
 
 import InputComponent from '../input';
-import { ICreateUser, IPropsState } from '../../iterfaces';
+import { ICreatedUser, ICreateUser, IPropsState } from '../../iterfaces';
 import { StyleContainer } from './style';
 import { schemaRegister } from '../../schemas';
+import { apiAccess } from '../../services';
 
 const FormRegister = ({setIsInRegisterPage}: IPropsState) => {
 
@@ -18,13 +19,17 @@ const FormRegister = ({setIsInRegisterPage}: IPropsState) => {
   });
 
   const onSubmit = (data: ICreateUser) => {
-    console.log(data);
+    
+    apiAccess
+      .post("/users", JSON.stringify(data))
+      .then((res) => handleSuccessCreate(res.data.data))
+      .catch((err) => console.log(err))
   };
 
-  // const handleSwithPage =() => {
+  const handleSuccessCreate = (data: ICreatedUser) => {
 
-  //   setIsInRegisterPage(false)
-  // }
+    
+  }
 
   return (
     <>
