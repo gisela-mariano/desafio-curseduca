@@ -7,61 +7,61 @@ export const StyleContainer = styled.div`
   max-width: 500px;
   max-height: 580px;
 
+  padding: 15px;
+
+  background-color: white;
+
+  border: 2px solid var(--blue);
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
   box-sizing: border-box;
 
-  @media screen and (max-width: 550px){
-    width: 85%;
-    height: 85%;
+  h2{
+    color: var(--blue);
 
-    background: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
 
-    padding: 15px;
+  form{
+    height: 80%;
+    width: 100%;
 
-    border: 2px solid var(--blue);
-    border-radius: 20px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-
-    h2{
-      color: var(--blue);
-
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-
-    form{
-      height: 80%;
+    .cont-buttons{
       width: 100%;
+      height: 100px;
 
-      .cont-buttons{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      button{
         width: 100%;
-        height: 100px;
+        height: 42px;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+        font-weight: bold;
 
-        button{
-          width: 100%;
-          height: 42px;
+        border: none;
+        border-radius: 20px;
 
-          font-weight: bold;
+        background-color: var(--blue);
+        color: white;
 
-          border: none;
-          border-radius: 20px;
-
-          background-color: var(--blue);
-          color: white;
-
-          :last-child{
-            background-color: var(--yellow);
-          }
+        :last-child{
+          background-color: var(--yellow);
         }
       }
     }
+  }
+
+  @media screen and (max-width: 650px){
+    width: 85%;
+    height: 85%;
   }
 `

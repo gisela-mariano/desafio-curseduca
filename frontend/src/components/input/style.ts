@@ -10,65 +10,62 @@ export const StyleContainer = styled.div<IPropsInput>`
 
   box-sizing: border-box;
 
-  @media screen and (max-width: 550px) {
+  .label{
+    color: var(--blue);
 
-    .label{
+    max-height: 36px;
+  }
+
+  .input{
+    width: 100%;
+    height: 45px;
+
+    margin-top: 10px;
+
+    border: 2px solid var(--blue);
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    box-sizing: border-box;
+
+    svg{
       color: var(--blue);
-
-      max-height: 36px;
     }
 
-    .input{
-      width: 100%;
-      height: 45px;
+    input{
+      width: 80%;
+      height: 90%;
 
-      margin-top: 10px;
+      padding-left: 6px;
 
-      border: 2px solid var(--blue);
-      border-radius: 20px;
+      background-color: transparent;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
+      border: none;
+      border-radius: 15px;
 
       box-sizing: border-box;
 
-      svg{
-        color: var(--blue);
-      }
+      outline: none;
 
-      input{
-        width: 80%;
-        height: 90%;
-
-        padding-left: 6px;
-
-        background-color: transparent;
-
-        border: none;
-        border-radius: 15px;
-
-        box-sizing: border-box;
-
-        outline: none;
-
-        ::placeholder{
-          color: var(--gray);
-        }
+      ::placeholder{
+        color: var(--gray);
       }
     }
+  }
 
-    ${
-      props => props.isErrored && css`
+  ${
+    props => props.isErrored && css`
 
-        .input{
-          border-color: var(--red);
-          
-          svg{
-            color: var(--red);
-          }
+      .input{
+        border-color: var(--red);
+        
+        svg{
+          color: var(--red);
         }
-      `
-    }
+      }
+    `
   }
 `
