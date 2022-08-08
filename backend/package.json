@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "typeorm": "typeorm-ts-node-commonjs",
-    "dev": "ts-node-dev src/app.ts"
+    "dev": "ts-node-dev src/app.ts",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts" 
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

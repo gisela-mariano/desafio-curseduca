@@ -12,7 +12,7 @@ export class Post{
   @Column({type: "varchar", length:300})
   post: string;
 
-  @ManyToOne(() => User, (user) => user.posts)
+  @ManyToOne(() => User, (user) => user.posts, {onDelete: 'CASCADE'})
   id_user: User;
 
   constructor() {
