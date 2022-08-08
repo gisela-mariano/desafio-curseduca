@@ -54,24 +54,33 @@ const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+  
   body{
     font-family: 'Poppins', sans-serif;
     cursor: default;
+  }
+
+  body, .posts{
     ::-webkit-scrollbar {
       width: 5px;
       height: 5px;
     }
     ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
-      background: var(--bg-red-middle);
+      background: white;
     }
     ::-webkit-scrollbar-thumb {
-      background: var(--bg-red-ligth);
+      background: var(--blue);
       border-radius: 3px;
     }
   }
+
   button{
     cursor: pointer;
     transition: all 0.5s ease;
+
+    :hover{
+      filter: brightness(93%);
+    }
   }
 
   main{
@@ -81,6 +90,46 @@ const GlobalStyle = createGlobalStyle`
   .erro{
     font-size: 0.8rem;
     color: var(--red);
+  }
+
+  .Modal{
+    max-width: 400px;
+    width: 100%;
+    height: 400px;
+
+    padding: 15px;
+    
+    background-color: white;
+
+    border: 2px solid var(--yellow);
+    border-radius: 20px;
+
+    outline: none;
+
+    box-sizing: border-box;
+  }
+
+  .Overlay{
+    background-color: rgba(0, 0, 0, 0.2);
+
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 500px) {
+    .Modal{
+      width: 300px;
+    }
   }
 `;
 

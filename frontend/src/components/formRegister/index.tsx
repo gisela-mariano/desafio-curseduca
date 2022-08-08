@@ -7,6 +7,7 @@ import { ICreatedUser, ICreateUser, IPropsState } from '../../iterfaces';
 import { StyleContainer } from './style';
 import { schemaRegister } from '../../schemas';
 import { apiAccess } from '../../services';
+import { toast } from 'react-toastify';
 
 const FormRegister = ({setIsInRegisterPage}: IPropsState) => {
 
@@ -23,12 +24,14 @@ const FormRegister = ({setIsInRegisterPage}: IPropsState) => {
     apiAccess
       .post("/users", JSON.stringify(data))
       .then((res) => handleSuccessCreate(res.data.data))
-      .catch((err) => console.log(err))
+      .catch((_) => toast.error("Email já cadastrado."))
   };
 
   const handleSuccessCreate = (data: ICreatedUser) => {
 
-    
+    toast.success("Conta criada com sucesso!")
+
+    setIsInRegisterPage(false)
   }
 
   return (

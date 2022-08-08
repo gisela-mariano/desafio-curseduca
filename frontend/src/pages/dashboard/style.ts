@@ -31,24 +31,15 @@ export const StyleContainer = styled.div`
         height: 45px;
       }
 
-      .cont-user-info{
-        width: 135px;
+      button{
+        width: 50px;
+        height: 30px;
 
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        background-color: var(--yellow);
+        color: white;
 
-        span{
-          color: white;
-
-          :last-child{
-            font-weight: bold;
-          }
-        }
-
-        img{
-          height: 35px;
-        }
+        border: none;
+        border-radius: 15px;
       }
 
     }
@@ -56,7 +47,7 @@ export const StyleContainer = styled.div`
 
   main{
     width: 100%;
-    height: 100%;
+    height: 87.4%;
 
     box-sizing: border-box;
 
@@ -67,7 +58,7 @@ export const StyleContainer = styled.div`
       width: 60%;
       height: 100%;
 
-      padding: 20px 10px 10px;
+      padding: 20px 10px 20px 10px;
 
       background-color: white;
       box-shadow: 0px 10px 25px 3px rgba(0,0,0,0.33);
@@ -152,19 +143,26 @@ export const StyleContainer = styled.div`
 
     .posts{
       width: 100%;
-      height: 100%;
+      max-height: 70%;
+
+      overflow-y: auto;
+
+      .loading{
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+          width: 40px;
+        }
+      }
     }
   }
 
   @media screen and (max-width: 650px) {
-
-    .cont-user-info{
-      max-width: 95px;
-
-      img{
-        display: none;
-      }
-    }
 
     main{
       .cont-content{

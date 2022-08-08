@@ -7,8 +7,12 @@ import { ILoggedUser, ILoginUser, IPropsState } from '../../iterfaces';
 import { StyleContainer } from './style';
 import { schemaLogin } from '../../schemas';
 import { apiAccess } from '../../services';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const FormLogin = ({setIsInRegisterPage}: IPropsState) => {
+
+  const history = useHistory();
 
   const {
     register,
@@ -23,12 +27,14 @@ const FormLogin = ({setIsInRegisterPage}: IPropsState) => {
     apiAccess
       .post("/users/login", JSON.stringify(data))
       .then((res) => handleSuccessLogin(res.data.token))
-      .catch((err) => console.log(err))
+      .catch((_) => toast.error("Email ou senha inválidos."))
   };
 
   const handleSuccessLogin = (token: ILoggedUser) => {
 
-    localStorage.setItem("userData", JSON.stringify({token}))
+    localStorage.setItem("userData", JSON.stringify({token}));
+
+    history.push('/dashboard')
   }
 
   return (
