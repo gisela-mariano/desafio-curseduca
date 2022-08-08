@@ -1,22 +1,33 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import logo from "../../assets/imgs/Icon-logo.svg"
-import profile from "../../assets/imgs/icon-profile.svg"
 import Post from "../../components/post";
-import { IPost } from "../../iterfaces";
+import { IUserPosts } from "../../iterfaces";
 import { apiAccess } from "../../services";
 import { StyleContainer } from "./style";
-
+import loading from "../../assets/imgs/git-loading.gif"
 
 const Dashboard = () => {
 
+  const history = useHistory();
+
+  if(!!JSON.parse(localStorage.getItem('userData')!) === false){
+
+    history.push('/')
+  }
+
   const [count, setCount] = useState(0);
   const [value, setValue] = useState('');
-  const [posts, setPosts] = useState<IPost[]>([])
+  const [posts, setPosts] = useState<IUserPosts[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const userData = localStorage.getItem('userData');
   const token = JSON.parse(userData!).token;
 
-  const getPosts = () => {
+  const getPosts = useCallback(() => {
+
+    setIsLoading(true)
 
     apiAccess
       .get("/posts", {
@@ -24,16 +35,23 @@ const Dashboard = () => {
           "Authorization": `Bearer ${token}`
         }
       })
-      .then((res) => handleGetPosts(res.data.data))
-      .catch((err) => console.log(err))
+      .then((res) => setPosts(res.data.data))
+      .catch((err) => err)
+
+    setIsLoading(false)
+
+  }, [token])
+
+  const handleLogout = () => {
+
+    localStorage.removeItem('userData');
+
+    history.push('/')
   }
 
-  const handleGetPosts = (posts: IPost[]) => {
-
-    setPosts(posts);
-  }
-
-  useEffect(() => getPosts())
+  useEffect(() => {
+    getPosts()
+  }, [getPosts])
 
   const handleGetValue = (value: string) => {
 
@@ -42,6 +60,11 @@ const Dashboard = () => {
   }
 
   const handlePost = () => {
+
+    if(value.length < 3){
+
+      return toast.error("O post deve ter pelo menos 3 letras.")
+    }
 
     const newPost = {
       post: value
@@ -53,12 +76,15 @@ const Dashboard = () => {
           "Authorization": `Bearer ${token}`
         }
       })
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err))
-  }
+      .then((_) => {
+        toast.success("Post criado com sucesso!");
 
-  const username = "Fulano de Tal"
-  const id_user = "00"
+        setValue('')
+      })
+      .catch((err) => err)
+
+      getPosts()
+  }
 
   return (
     <>
@@ -67,13 +93,7 @@ const Dashboard = () => {
           <div className="cont-header">
             <img src={logo} alt="Ícone logomarca Curseduca" />
 
-          <button>Sair</button>
-
-            {/* <div className="cont-user-info">
-              <span>Olá, <span>Fulana</span> </span>
-
-              <img src={profile} alt="Ícone perfil" />
-            </div> */}
+          <button onClick={() => handleLogout()}>Sair</button>
           </div>
         </header>
 
@@ -84,7 +104,7 @@ const Dashboard = () => {
 
               <div className="cont-textarea">
 
-                <textarea name="newPost" maxLength={300} placeholder="Escreva seu texto aqui" onChange={(e) => handleGetValue(e.target.value)}/>
+                <textarea value={value} maxLength={300} placeholder="Escreva seu texto aqui" onChange={(e) => handleGetValue(e.target.value)}/>
 
                 <div className="cont-infos-textarea">
                   <button onClick={() => handlePost()}>Postar</button>
@@ -94,11 +114,15 @@ const Dashboard = () => {
             </div>
 
             <div className="posts">
-              {/* <Post username={username} post={post} id_user={id_user} id_post={id_post}/> */}
 
               {
-                posts.map((post) => {
-                  return <Post key={post.id} username={username} post={post.post} id_user={id_user} id_post={post.id}/>
+                isLoading ?
+                <div className="loading">
+                  <img src={loading} alt="Animação carregamento" />
+                </div>
+                :
+                posts.map((post, index) => {
+                  return <Post key={index} username={post.name} posts={post.posts} getPosts={getPosts}/>
                 })
               }
             </div>

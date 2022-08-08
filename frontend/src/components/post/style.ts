@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const StyleContainer = styled.div`
 
-  width: 100%;
+  width: 99%;
 
   margin-bottom: 20px;
   padding: 10px;
@@ -34,6 +34,8 @@ export const StyleContainer = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      cursor: pointer;
 
       span{
         font-size: 1rem;
