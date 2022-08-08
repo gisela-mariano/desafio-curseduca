@@ -4,6 +4,7 @@ export const StyleContainer = styled.div`
 
   width: 100%;
 
+  margin-bottom: 20px;
   padding: 10px;
 
   border: 2px solid var(--yellow);

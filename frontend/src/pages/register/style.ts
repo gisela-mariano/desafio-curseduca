@@ -7,35 +7,32 @@ export const StyleContainer = styled.div`
 
   box-sizing: border-box;
 
-  @media screen and (max-width: 550px) {
-    
-    header{
-      width: 100%;
-      height: 90px;
-  
-      background-color: var(--blue);
-  
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  header{
+    width: 100%;
+    height: 90px;
 
-      box-sizing: border-box;
-  
-      img{
-        height: 50%;
-        max-height: 70px;
-      }
+    background-color: var(--blue);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    img{
+      height: 50%;
+      max-height: 70px;
     }
+  }
 
-    main{
-      width: 100%;
-      height: 100%;
+  main{
+    width: 100%;
+    height: 100%;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      box-sizing: border-box;
-    }
+    box-sizing: border-box;
   }
 `;

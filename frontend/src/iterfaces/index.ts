@@ -34,6 +34,7 @@ export interface IPropsState{
 export interface IPropsStateModal{
   modalIsOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  id_post: string;
 }
 
 export interface INewPost{
@@ -41,4 +42,19 @@ export interface INewPost{
   post: string;
   id_user: string;
   id_post: string;
+}
+
+export interface ICreatedUser{
+  id: string;
+  name: string;
+  email: string;
+}
+
+export interface ILoggedUser{
+  token: string;
+}
+
+export interface IPost{
+  id: string;
+  post: string
 }
