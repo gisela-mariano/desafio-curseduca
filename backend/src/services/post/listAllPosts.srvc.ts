@@ -1,3 +1,6 @@
+import { AppDataSource } from '../../data-source';
+import { Post } from '../../entities/post.entity';
+import { User } from '../../entities/user.entity';
 import { IListPostResp } from '../../interfaces/post.interface';
 import { postRepository } from '../../repositories/post.repository';
 import { userRepository } from '../../repositories/user.repository';
