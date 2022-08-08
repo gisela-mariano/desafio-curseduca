@@ -10,4 +10,4 @@ app.use(express.json());
 app.use("/users", userRouter)
 app.use("/posts", postRouter)
 
-app.listen(3000, () => console.log('App rodando na porta 3000'))
+app.listen(4000, () => console.log('App rodando na porta 4000'))

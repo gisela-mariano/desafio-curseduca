@@ -1,13 +1,12 @@
-import { ICreatePostResp } from '../../interfaces/post.interface';
+import { IListPostResp } from '../../interfaces/post.interface';
 import { postRepository } from '../../repositories/post.repository';
+import { userRepository } from '../../repositories/user.repository';
 
-const listAllPostsService = async (): Promise<ICreatePostResp[]> => {
-  const posts = await postRepository.find({
-    select: {
-      id: true,
-      post: true,
-    },
-  });
+const listAllPostsService = async (): Promise<IListPostResp[]> => {
+  const posts = await userRepository.createQueryBuilder('user')
+    .innerJoin("user.posts", "post", "post.id_user = user.id")
+    .select(["user.name", "post"])
+    .getMany();
 
   return posts;
 };
